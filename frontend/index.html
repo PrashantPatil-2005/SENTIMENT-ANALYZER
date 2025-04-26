@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Sentiment Analyzer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-newspaper"></i> News Sentiment Analyzer</h1>
+      <p>Analyze the sentiment of news articles on any topic</p>
+    </header>
+
+    <main>
+      <section class="search-section">
+        <form id="search-form">
+          <div class="search-container">
+            <input type="text" id="search-query" placeholder="Enter a topic, person, or event..." required>
+            <button type="submit"><i class="fas fa-search"></i> Analyze</button>
+          </div>
+          
+          <div class="filters">
+            <div class="filter-group">
+              <label for="date-from">From:</label>
+              <input type="date" id="date-from">
+            </div>
+            <div class="filter-group">
+              <label for="date-to">To:</label>
+              <input type="date" id="date-to">
+            </div>
+            <div class="filter-group">
+              <label for="sources">Sources:</label>
+              <select id="sources">
+                <option value="">All Sources</option>
+                <option value="bbc-news,cnn,the-washington-post">Major News</option>
+                <option value="business-insider,financial-times,the-wall-street-journal">Business</option>
+                <option value="techcrunch,wired,the-verge">Technology</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <div class="loading-section hidden" id="loading">
+        <div class="spinner"></div>
+        <p>Analyzing news articles...</p>
+      </div>
+
+      <section class="results-section hidden" id="results">
+        <div class="summary-container">
+          <h2>Analysis Summary: <span id="search-term"></span></h2>
+          
+          <div class="sentiment-overview">
+            <div class="sentiment-score">
+              <div class="score-gauge" id="score-gauge">
+                <div class="gauge-pointer"></div>
+              </div>
+              <p>Overall Sentiment: <span id="overall-sentiment"></span></p>
+            </div>
+            
+            <div class="sentiment-distribution">
+              <h3>Sentiment Distribution</h3>
+              <div class="sentiment-bars">
+                <div class="sentiment-bar">
+                  <div class="bar-label">Positive</div>
+                  <div class="bar-container">
+                    <div class="bar positive" id="positive-bar"></div>
+                    <span class="percentage" id="positive-percentage">0%</span>
+                  </div>
+                </div>
+                <div class="sentiment-bar">
+                  <div class="bar-label">Neutral</div>
+                  <div class="bar-container">
+                    <div class="bar neutral" id="neutral-bar"></div>
+                    <span class="percentage" id="neutral-percentage">0%</span>
+                  </div>
+                </div>
+                <div class="sentiment-bar">
+                  <div class="bar-label">Negative</div>
+                  <div class="bar-container">
+                    <div class="bar negative" id="negative-bar"></div>
+                    <span class="percentage" id="negative-percentage">0%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="keyword-cloud" id="keyword-cloud">
+            <h3>Emotional Keywords</h3>
+            <div class="keywords" id="keywords-container"></div>
+          </div>
+        </div>
+        
+        <div class="articles-container">
+          <h3>Analyzed Articles</h3>
+          <div class="articles-list" id="articles-list"></div>
+        </div>
+      </section>
+      
+      <section class="trending-section">
+        <h2>Trending Topics</h2>
+        <div class="trending-topics" id="trending-topics">
+          <p>Loading trending topics...</p>
+        </div>
+      </section>
+      
+      <section class="history-section">
+        <h2>Recent Analyses</h2>
+        <div class="history-list" id="history-list">
+          <p>Loading recent analyses...</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 News Sentiment Analyzer | Using free tools: NewsAPI, Natural.js</p>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
